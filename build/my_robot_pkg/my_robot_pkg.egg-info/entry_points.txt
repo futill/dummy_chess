@@ -1,0 +1,5 @@
+[console_scripts]
+arm_move = my_robot_pkg.arm_move:main
+chess_vision_node = my_robot_pkg.chess_vision_node:main
+gui = my_robot_pkg.gui:main
+

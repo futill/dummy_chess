@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "my_robot_pkg_msg__py",
+		"source" : "/home/futill/targer_ws/build/my_robot_pkg_msg/my_robot_pkg_msg__py"
+	}
+}

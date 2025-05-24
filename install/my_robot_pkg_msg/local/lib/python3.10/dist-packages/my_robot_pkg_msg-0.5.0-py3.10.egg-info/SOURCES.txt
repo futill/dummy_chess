@@ -1,0 +1,8 @@
+setup.py
+my_robot_pkg_msg/__init__.py
+my_robot_pkg_msg.egg-info/PKG-INFO
+my_robot_pkg_msg.egg-info/SOURCES.txt
+my_robot_pkg_msg.egg-info/dependency_links.txt
+my_robot_pkg_msg.egg-info/top_level.txt
+my_robot_pkg_msg/msg/__init__.py
+my_robot_pkg_msg/msg/_chess_move.py

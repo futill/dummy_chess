@@ -1,0 +1,23 @@
+[0.710s] Invoking command in '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg': PYTHONPATH=/home/futill/targer_ws/build/my_robot_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/my_robot_pkg build --build-base /home/futill/targer_ws/build/my_robot_pkg/build install --record /home/futill/targer_ws/build/my_robot_pkg/install.log --single-version-externally-managed install_data
+[0.957s] running egg_info
+[0.958s] writing ../../../build/my_robot_pkg/my_robot_pkg.egg-info/PKG-INFO
+[0.958s] writing dependency_links to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/dependency_links.txt
+[0.958s] writing entry points to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/entry_points.txt
+[0.959s] writing requirements to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/requires.txt
+[0.959s] writing top-level names to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/top_level.txt
+[0.960s] reading manifest file '../../../build/my_robot_pkg/my_robot_pkg.egg-info/SOURCES.txt'
+[0.962s] writing manifest file '../../../build/my_robot_pkg/my_robot_pkg.egg-info/SOURCES.txt'
+[0.962s] running build
+[0.962s] running build_py
+[0.962s] running install
+[0.962s] running install_lib
+[0.963s] running install_data
+[0.963s] running install_egg_info
+[0.965s] removing '/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[0.965s] Copying ../../../build/my_robot_pkg/my_robot_pkg.egg-info to /home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg-0.0.0-py3.10.egg-info
+[0.966s] running install_scripts
+[0.986s] Installing arm_move script to /home/futill/targer_ws/install/my_robot_pkg/lib/my_robot_pkg
+[0.987s] Installing chess_vision_node script to /home/futill/targer_ws/install/my_robot_pkg/lib/my_robot_pkg
+[0.987s] Installing gui script to /home/futill/targer_ws/install/my_robot_pkg/lib/my_robot_pkg
+[0.987s] writing list of installed files to '/home/futill/targer_ws/build/my_robot_pkg/install.log'
+[1.015s] Invoked command in '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg' returned '0': PYTHONPATH=/home/futill/targer_ws/build/my_robot_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/my_robot_pkg build --build-base /home/futill/targer_ws/build/my_robot_pkg/build install --record /home/futill/targer_ws/build/my_robot_pkg/install.log --single-version-externally-managed install_data

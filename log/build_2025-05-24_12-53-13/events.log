@@ -1,0 +1,237 @@
+[0.000000] (-) TimerEvent: {}
+[0.004341] (my_robot_pkg_msg) JobQueued: {'identifier': 'my_robot_pkg_msg', 'dependencies': OrderedDict()}
+[0.004645] (my_robot_pkg) JobQueued: {'identifier': 'my_robot_pkg', 'dependencies': OrderedDict([('my_robot_pkg_msg', '/home/futill/targer_ws/install/my_robot_pkg_msg')])}
+[0.004807] (my_robot_pkg_msg) JobStarted: {'identifier': 'my_robot_pkg_msg'}
+[0.049501] (my_robot_pkg_msg) JobProgress: {'identifier': 'my_robot_pkg_msg', 'progress': 'cmake'}
+[0.054002] (my_robot_pkg_msg) JobProgress: {'identifier': 'my_robot_pkg_msg', 'progress': 'build'}
+[0.055954] (my_robot_pkg_msg) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/futill/targer_ws/build/my_robot_pkg_msg', '--', '-j8', '-l8'], 'cwd': '/home/futill/targer_ws/build/my_robot_pkg_msg', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_HK:en'), ('USER', 'futill'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/futill/dummy2_hand_eye_calibration_ws/install/lib:/home/futill/targer_ws/install/my_robot_pkg_msg/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/futill'), ('OLDPWD', '/home/futill'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1373'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/futill/targer_ws/install:/home/futill/dummy2_hand_eye_calibration_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'futill'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'futill'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/futill/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/futill-virtual-machine:@/tmp/.ICE-unix/1345,unix/futill-virtual-machine:/tmp/.ICE-unix/1345'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/c41f44bd_e00a_4e3b_b365_ee450058b272'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_HK.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.3EB962'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/futill/dummy2_hand_eye_calibration_ws/install:/home/futill/targer_ws/install/my_robot_pkg:/home/futill/targer_ws/install/my_robot_pkg_msg:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/futill/targer_ws/build/my_robot_pkg_msg'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/futill/dummy2_hand_eye_calibration_ws/build/ros2_aruco:/home/futill/dummy2_hand_eye_calibration_ws/build/rboot_libs:/home/futill/dummy2_hand_eye_calibration_ws/build/easy_handeye2:/home/futill/dummy2_hand_eye_calibration_ws/build/dummy2_can2eth:/home/futill/dummy2_hand_eye_calibration_ws/install/local/lib/python3.10/dist-packages:/home/futill/dummy2_hand_eye_calibration_ws/build/dummy2-gripperv3_description:/home/futill/dummy2_hand_eye_calibration_ws/install/lib/python3.10/site-packages:/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages:/home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/futill/dummy2_hand_eye_calibration_ws/install:/home/futill/targer_ws/install/my_robot_pkg_msg:/home/futill/targer_ws/install/my_robot_pkg:/opt/ros/humble')]), 'shell': False}
+[0.101044] (-) TimerEvent: {}
+[0.204968] (-) TimerEvent: {}
+[0.306153] (-) TimerEvent: {}
+[0.407221] (-) TimerEvent: {}
+[0.508609] (-) TimerEvent: {}
+[0.558752] (my_robot_pkg_msg) StdoutLine: {'line': b'[  3%] Built target my_robot_pkg_msg__cpp\n'}
+[0.608675] (-) TimerEvent: {}
+[0.620915] (my_robot_pkg_msg) StdoutLine: {'line': b'[  3%] Built target ament_cmake_python_copy_my_robot_pkg_msg\n'}
+[0.648335] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 12%] Built target my_robot_pkg_msg__rosidl_generator_c\n'}
+[0.687409] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 22%] Built target my_robot_pkg_msg__rosidl_typesupport_fastrtps_cpp\n'}
+[0.699316] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 32%] Built target my_robot_pkg_msg__rosidl_typesupport_introspection_cpp\n'}
+[0.711738] (-) TimerEvent: {}
+[0.727908] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 41%] Built target my_robot_pkg_msg__rosidl_typesupport_cpp\n'}
+[0.772869] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 51%] Built target my_robot_pkg_msg__rosidl_typesupport_fastrtps_c\n'}
+[0.786539] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 61%] Built target my_robot_pkg_msg__rosidl_typesupport_c\n'}
+[0.801618] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 70%] Built target my_robot_pkg_msg__rosidl_typesupport_introspection_c\n'}
+[0.811951] (-) TimerEvent: {}
+[0.914744] (-) TimerEvent: {}
+[0.924072] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 70%] Built target my_robot_pkg_msg\n'}
+[1.014995] (-) TimerEvent: {}
+[1.024788] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 74%] Built target my_robot_pkg_msg__py\n'}
+[1.116258] (-) TimerEvent: {}
+[1.142548] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 80%] Built target my_robot_pkg_msg__rosidl_generator_py\n'}
+[1.217566] (-) TimerEvent: {}
+[1.260365] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 87%] Built target my_robot_pkg_msg__rosidl_typesupport_fastrtps_c__pyext\n'}
+[1.272369] (my_robot_pkg_msg) StdoutLine: {'line': b'[ 93%] Built target my_robot_pkg_msg__rosidl_typesupport_c__pyext\n'}
+[1.282758] (my_robot_pkg_msg) StdoutLine: {'line': b'[100%] Built target my_robot_pkg_msg__rosidl_typesupport_introspection_c__pyext\n'}
+[1.318384] (-) TimerEvent: {}
+[1.419391] (-) TimerEvent: {}
+[1.520368] (-) TimerEvent: {}
+[1.541608] (my_robot_pkg_msg) StdoutLine: {'line': b'running egg_info\n'}
+[1.544671] (my_robot_pkg_msg) StdoutLine: {'line': b'writing my_robot_pkg_msg.egg-info/PKG-INFO\n'}
+[1.545526] (my_robot_pkg_msg) StdoutLine: {'line': b'writing dependency_links to my_robot_pkg_msg.egg-info/dependency_links.txt\n'}
+[1.545860] (my_robot_pkg_msg) StdoutLine: {'line': b'writing top-level names to my_robot_pkg_msg.egg-info/top_level.txt\n'}
+[1.556191] (my_robot_pkg_msg) StdoutLine: {'line': b"reading manifest file 'my_robot_pkg_msg.egg-info/SOURCES.txt'\n"}
+[1.559322] (my_robot_pkg_msg) StdoutLine: {'line': b"writing manifest file 'my_robot_pkg_msg.egg-info/SOURCES.txt'\n"}
+[1.620870] (-) TimerEvent: {}
+[1.721521] (-) TimerEvent: {}
+[1.728621] (my_robot_pkg_msg) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_my_robot_pkg_msg_egg\n'}
+[1.776334] (my_robot_pkg_msg) CommandEnded: {'returncode': 0}
+[1.785547] (my_robot_pkg_msg) JobProgress: {'identifier': 'my_robot_pkg_msg', 'progress': 'install'}
+[1.818376] (my_robot_pkg_msg) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/futill/targer_ws/build/my_robot_pkg_msg'], 'cwd': '/home/futill/targer_ws/build/my_robot_pkg_msg', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_HK:en'), ('USER', 'futill'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/futill/dummy2_hand_eye_calibration_ws/install/lib:/home/futill/targer_ws/install/my_robot_pkg_msg/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/futill'), ('OLDPWD', '/home/futill'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1373'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/futill/targer_ws/install:/home/futill/dummy2_hand_eye_calibration_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'futill'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'futill'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/futill/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/futill-virtual-machine:@/tmp/.ICE-unix/1345,unix/futill-virtual-machine:/tmp/.ICE-unix/1345'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/c41f44bd_e00a_4e3b_b365_ee450058b272'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_HK.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.3EB962'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.105'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/futill/dummy2_hand_eye_calibration_ws/install:/home/futill/targer_ws/install/my_robot_pkg:/home/futill/targer_ws/install/my_robot_pkg_msg:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/futill/targer_ws/build/my_robot_pkg_msg'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/futill/dummy2_hand_eye_calibration_ws/build/ros2_aruco:/home/futill/dummy2_hand_eye_calibration_ws/build/rboot_libs:/home/futill/dummy2_hand_eye_calibration_ws/build/easy_handeye2:/home/futill/dummy2_hand_eye_calibration_ws/build/dummy2_can2eth:/home/futill/dummy2_hand_eye_calibration_ws/install/local/lib/python3.10/dist-packages:/home/futill/dummy2_hand_eye_calibration_ws/build/dummy2-gripperv3_description:/home/futill/dummy2_hand_eye_calibration_ws/install/lib/python3.10/site-packages:/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages:/home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/futill/dummy2_hand_eye_calibration_ws/install:/home/futill/targer_ws/install/my_robot_pkg_msg:/home/futill/targer_ws/install/my_robot_pkg:/opt/ros/humble')]), 'shell': False}
+[1.827610] (-) TimerEvent: {}
+[1.846474] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[1.848656] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/ament_index/resource_index/rosidl_interfaces/my_robot_pkg_msg\n'}
+[1.850157] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg\n'}
+[1.850827] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg\n'}
+[1.852051] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail\n'}
+[1.853094] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__functions.h\n'}
+[1.853708] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__functions.c\n'}
+[1.853932] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__type_support.h\n'}
+[1.855485] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__struct.h\n'}
+[1.855683] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/chess_move.h\n'}
+[1.855810] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/rosidl_generator_c__visibility_control.h\n'}
+[1.855908] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/environment/library_path.sh\n'}
+[1.856021] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/environment/library_path.dsv\n'}
+[1.856838] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/lib/libmy_robot_pkg_msg__rosidl_generator_c.so\n'}
+[1.858175] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg\n'}
+[1.858468] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg\n'}
+[1.859646] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[1.859857] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail\n'}
+[1.859950] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__rosidl_typesupport_fastrtps_c.h\n'}
+[1.862865] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/lib/libmy_robot_pkg_msg__rosidl_typesupport_fastrtps_c.so\n'}
+[1.864492] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg\n'}
+[1.864756] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg\n'}
+[1.868389] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail\n'}
+[1.872695] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__type_support.c\n'}
+[1.873346] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__rosidl_typesupport_introspection_c.h\n'}
+[1.873615] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[1.873927] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/lib/libmy_robot_pkg_msg__rosidl_typesupport_introspection_c.so\n'}
+[1.874051] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/lib/libmy_robot_pkg_msg__rosidl_typesupport_c.so\n'}
+[1.874135] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg\n'}
+[1.874226] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg\n'}
+[1.874336] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[1.874408] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail\n'}
+[1.874454] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__type_support.hpp\n'}
+[1.874500] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__traits.hpp\n'}
+[1.874544] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__struct.hpp\n'}
+[1.874603] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__builder.hpp\n'}
+[1.874646] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/chess_move.hpp\n'}
+[1.874690] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg\n'}
+[1.874732] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg\n'}
+[1.874775] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail\n'}
+[1.874872] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/dds_fastrtps\n'}
+[1.874933] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[1.874986] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[1.875032] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/lib/libmy_robot_pkg_msg__rosidl_typesupport_fastrtps_cpp.so\n'}
+[1.875098] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg\n'}
+[1.875151] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg\n'}
+[1.875193] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail\n'}
+[1.875240] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__type_support.cpp\n'}
+[1.875353] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/include/my_robot_pkg_msg/my_robot_pkg_msg/msg/detail/chess_move__rosidl_typesupport_introspection_cpp.hpp\n'}
+[1.877478] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/lib/libmy_robot_pkg_msg__rosidl_typesupport_introspection_cpp.so\n'}
+[1.878804] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/lib/libmy_robot_pkg_msg__rosidl_typesupport_cpp.so\n'}
+[1.879313] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/environment/pythonpath.sh\n'}
+[1.879788] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/environment/pythonpath.dsv\n'}
+[1.879939] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg-0.5.0-py3.10.egg-info\n'}
+[1.880169] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Installing: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg-0.5.0-py3.10.egg-info/top_level.txt\n'}
+[1.880763] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Installing: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg-0.5.0-py3.10.egg-info/SOURCES.txt\n'}
+[1.880990] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Installing: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg-0.5.0-py3.10.egg-info/PKG-INFO\n'}
+[1.881336] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Installing: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg-0.5.0-py3.10.egg-info/dependency_links.txt\n'}
+[1.882316] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg\n'}
+[1.883664] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/libmy_robot_pkg_msg__rosidl_generator_py.so\n'}
+[1.884046] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/__init__.py\n'}
+[1.884321] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/_my_robot_pkg_msg_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[1.884683] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/_my_robot_pkg_msg_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[1.884847] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/_my_robot_pkg_msg_s.ep.rosidl_typesupport_c.c\n'}
+[1.884952] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/my_robot_pkg_msg_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[1.885054] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/msg\n'}
+[1.885954] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/msg/_chess_move.py\n'}
+[1.886165] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/msg/__init__.py\n'}
+[1.886859] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/msg/_chess_move_s.c\n'}
+[1.887017] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/my_robot_pkg_msg_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[1.887104] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/my_robot_pkg_msg_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[1.930883] (-) TimerEvent: {}
+[1.990458] (my_robot_pkg_msg) StdoutLine: {'line': b"Listing '/home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg'...\n"}
+[1.991382] (my_robot_pkg_msg) StdoutLine: {'line': b"Listing '/home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/msg'...\n"}
+[2.020330] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/my_robot_pkg_msg_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[2.024159] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/my_robot_pkg_msg_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[2.028188] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages/my_robot_pkg_msg/my_robot_pkg_msg_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[2.031379] (-) TimerEvent: {}
+[2.035453] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/lib/libmy_robot_pkg_msg__rosidl_generator_py.so\n'}
+[2.035892] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/msg/ChessMove.idl\n'}
+[2.036151] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/msg/ChessMove.msg\n'}
+[2.036361] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/ament_index/resource_index/package_run_dependencies/my_robot_pkg_msg\n'}
+[2.037440] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/ament_index/resource_index/parent_prefix_path/my_robot_pkg_msg\n'}
+[2.037621] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/environment/ament_prefix_path.sh\n'}
+[2.037733] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/environment/ament_prefix_path.dsv\n'}
+[2.037913] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/environment/path.sh\n'}
+[2.038044] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/environment/path.dsv\n'}
+[2.038156] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/local_setup.bash\n'}
+[2.039134] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/local_setup.sh\n'}
+[2.039278] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/local_setup.zsh\n'}
+[2.039404] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/local_setup.dsv\n'}
+[2.039490] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Installing: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.dsv\n'}
+[2.039568] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/ament_index/resource_index/packages/my_robot_pkg_msg\n'}
+[2.043255] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/export_my_robot_pkg_msg__rosidl_generator_cExport.cmake\n'}
+[2.044024] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/export_my_robot_pkg_msg__rosidl_generator_cExport-noconfig.cmake\n'}
+[2.046288] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/export_my_robot_pkg_msg__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[2.048371] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/export_my_robot_pkg_msg__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[2.048861] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/my_robot_pkg_msg__rosidl_typesupport_introspection_cExport.cmake\n'}
+[2.049075] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/my_robot_pkg_msg__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[2.049567] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/my_robot_pkg_msg__rosidl_typesupport_cExport.cmake\n'}
+[2.049837] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/my_robot_pkg_msg__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[2.050974] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/export_my_robot_pkg_msg__rosidl_generator_cppExport.cmake\n'}
+[2.052407] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/export_my_robot_pkg_msg__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[2.052647] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/export_my_robot_pkg_msg__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[2.053583] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/my_robot_pkg_msg__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[2.053757] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/my_robot_pkg_msg__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[2.054676] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/my_robot_pkg_msg__rosidl_typesupport_cppExport.cmake\n'}
+[2.054838] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/my_robot_pkg_msg__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[2.058239] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/export_my_robot_pkg_msg__rosidl_generator_pyExport.cmake\n'}
+[2.058766] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/export_my_robot_pkg_msg__rosidl_generator_pyExport-noconfig.cmake\n'}
+[2.059133] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/rosidl_cmake-extras.cmake\n'}
+[2.059307] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[2.059509] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[2.059623] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[2.059773] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[2.059900] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[2.059996] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[2.060081] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/my_robot_pkg_msgConfig.cmake\n'}
+[2.060161] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/cmake/my_robot_pkg_msgConfig-version.cmake\n'}
+[2.060241] (my_robot_pkg_msg) StdoutLine: {'line': b'-- Up-to-date: /home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.xml\n'}
+[2.073144] (my_robot_pkg_msg) CommandEnded: {'returncode': 0}
+[2.132536] (-) TimerEvent: {}
+[2.207422] (my_robot_pkg_msg) JobEnded: {'identifier': 'my_robot_pkg_msg', 'rc': 0}
+[2.210513] (my_robot_pkg) JobStarted: {'identifier': 'my_robot_pkg'}
+[2.233581] (-) TimerEvent: {}
+[2.334409] (-) TimerEvent: {}
+[2.435992] (-) TimerEvent: {}
+[2.536683] (-) TimerEvent: {}
+[2.641071] (-) TimerEvent: {}
+[2.744577] (-) TimerEvent: {}
+[2.845109] (-) TimerEvent: {}
+[2.946118] (-) TimerEvent: {}
+[3.048820] (-) TimerEvent: {}
+[3.154656] (-) TimerEvent: {}
+[3.259841] (-) TimerEvent: {}
+[3.360659] (-) TimerEvent: {}
+[3.461783] (-) TimerEvent: {}
+[3.563330] (-) TimerEvent: {}
+[3.666324] (-) TimerEvent: {}
+[3.767894] (-) TimerEvent: {}
+[3.869095] (-) TimerEvent: {}
+[3.970040] (-) TimerEvent: {}
+[4.070881] (-) TimerEvent: {}
+[4.172383] (-) TimerEvent: {}
+[4.274469] (-) TimerEvent: {}
+[4.375920] (-) TimerEvent: {}
+[4.478663] (-) TimerEvent: {}
+[4.580052] (-) TimerEvent: {}
+[4.684010] (-) TimerEvent: {}
+[4.784816] (-) TimerEvent: {}
+[4.885558] (-) TimerEvent: {}
+[4.986998] (-) TimerEvent: {}
+[5.041615] (my_robot_pkg) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../../build/my_robot_pkg', 'build', '--build-base', '/home/futill/targer_ws/build/my_robot_pkg/build', 'install', '--record', '/home/futill/targer_ws/build/my_robot_pkg/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'en_HK:en', 'USER': 'futill', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/futill/targer_ws/install/my_robot_pkg_msg/lib:/home/futill/dummy2_hand_eye_calibration_ws/install/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/futill', 'OLDPWD': '/home/futill', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '1373', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/futill/targer_ws/install:/home/futill/dummy2_hand_eye_calibration_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'futill', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'futill', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/futill/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/futill-virtual-machine:@/tmp/.ICE-unix/1345,unix/futill-virtual-machine:/tmp/.ICE-unix/1345', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c41f44bd_e00a_4e3b_b365_ee450058b272', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_HK.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.3EB962', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.105', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/futill/dummy2_hand_eye_calibration_ws/install:/home/futill/targer_ws/install/my_robot_pkg:/home/futill/targer_ws/install/my_robot_pkg_msg:/opt/ros/humble', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/futill/targer_ws/build/my_robot_pkg', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/futill/targer_ws/build/my_robot_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages:/home/futill/dummy2_hand_eye_calibration_ws/build/ros2_aruco:/home/futill/dummy2_hand_eye_calibration_ws/build/rboot_libs:/home/futill/dummy2_hand_eye_calibration_ws/build/easy_handeye2:/home/futill/dummy2_hand_eye_calibration_ws/build/dummy2_can2eth:/home/futill/dummy2_hand_eye_calibration_ws/install/local/lib/python3.10/dist-packages:/home/futill/dummy2_hand_eye_calibration_ws/build/dummy2-gripperv3_description:/home/futill/dummy2_hand_eye_calibration_ws/install/lib/python3.10/site-packages:/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages:/home/futill/targer_ws/install/my_robot_pkg_msg/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/futill/targer_ws/install/my_robot_pkg_msg:/home/futill/dummy2_hand_eye_calibration_ws/install'}, 'shell': False}
+[5.087580] (-) TimerEvent: {}
+[5.188670] (-) TimerEvent: {}
+[5.290064] (-) TimerEvent: {}
+[5.392414] (-) TimerEvent: {}
+[5.493647] (-) TimerEvent: {}
+[5.595586] (-) TimerEvent: {}
+[5.697743] (-) TimerEvent: {}
+[5.715636] (my_robot_pkg) StdoutLine: {'line': b'running egg_info\n'}
+[5.720987] (my_robot_pkg) StdoutLine: {'line': b'writing ../../../build/my_robot_pkg/my_robot_pkg.egg-info/PKG-INFO\n'}
+[5.729489] (my_robot_pkg) StdoutLine: {'line': b'writing dependency_links to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/dependency_links.txt\n'}
+[5.736811] (my_robot_pkg) StdoutLine: {'line': b'writing entry points to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/entry_points.txt\n'}
+[5.742226] (my_robot_pkg) StdoutLine: {'line': b'writing requirements to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/requires.txt\n'}
+[5.742908] (my_robot_pkg) StdoutLine: {'line': b'writing top-level names to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/top_level.txt\n'}
+[5.747207] (my_robot_pkg) StdoutLine: {'line': b"reading manifest file '../../../build/my_robot_pkg/my_robot_pkg.egg-info/SOURCES.txt'\n"}
+[5.751501] (my_robot_pkg) StdoutLine: {'line': b"writing manifest file '../../../build/my_robot_pkg/my_robot_pkg.egg-info/SOURCES.txt'\n"}
+[5.752405] (my_robot_pkg) StdoutLine: {'line': b'running build\n'}
+[5.752534] (my_robot_pkg) StdoutLine: {'line': b'running build_py\n'}
+[5.756675] (my_robot_pkg) StdoutLine: {'line': b'running install\n'}
+[5.757183] (my_robot_pkg) StdoutLine: {'line': b'running install_lib\n'}
+[5.766468] (my_robot_pkg) StdoutLine: {'line': b'running install_data\n'}
+[5.767086] (my_robot_pkg) StdoutLine: {'line': b'running install_egg_info\n'}
+[5.774265] (my_robot_pkg) StdoutLine: {'line': b"removing '/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[5.776438] (my_robot_pkg) StdoutLine: {'line': b'Copying ../../../build/my_robot_pkg/my_robot_pkg.egg-info to /home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg-0.0.0-py3.10.egg-info\n'}
+[5.777819] (my_robot_pkg) StdoutLine: {'line': b'running install_scripts\n'}
+[5.798238] (-) TimerEvent: {}
+[5.843751] (my_robot_pkg) StdoutLine: {'line': b'Installing arm_move script to /home/futill/targer_ws/install/my_robot_pkg/lib/my_robot_pkg\n'}
+[5.846202] (my_robot_pkg) StdoutLine: {'line': b'Installing chess_vision_node script to /home/futill/targer_ws/install/my_robot_pkg/lib/my_robot_pkg\n'}
+[5.847412] (my_robot_pkg) StdoutLine: {'line': b'Installing gui script to /home/futill/targer_ws/install/my_robot_pkg/lib/my_robot_pkg\n'}
+[5.848472] (my_robot_pkg) StdoutLine: {'line': b"writing list of installed files to '/home/futill/targer_ws/build/my_robot_pkg/install.log'\n"}
+[5.898717] (-) TimerEvent: {}
+[6.001631] (-) TimerEvent: {}
+[6.062181] (my_robot_pkg) CommandEnded: {'returncode': 0}
+[6.091424] (my_robot_pkg) JobEnded: {'identifier': 'my_robot_pkg', 'rc': 0}
+[6.094345] (-) EventReactorShutdown: {}
