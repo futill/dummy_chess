@@ -9,8 +9,7 @@ import threading
 import queue
 import time
 import math
-
-MAX_MISSED_FRAMES = 5  # 最多容忍的未检测帧数
+from my_robot_pkg_msg.msg import ChessMove
 
 class ChessboardDetectorNode(Node):
     def __init__(self):
@@ -23,6 +22,7 @@ class ChessboardDetectorNode(Node):
             self.image_callback,
             qos_profile_sensor_data
         )
+        self.move_publisher = self.create_publisher(ChessMove, '/chess_state', 10)
         self.get_logger().info(f"已订阅图像话题：{image_topic}")
 
         self.image_queue = queue.Queue(maxsize=10)
@@ -30,8 +30,6 @@ class ChessboardDetectorNode(Node):
         self.shutdown_event = threading.Event()
 
         self.rect_filters = {}
-        self.missed_frames = 0
-
         self.processing_thread = threading.Thread(target=self.process_images)
         self.processing_thread.daemon = True
         self.processing_thread.start()
@@ -91,48 +89,53 @@ class ChessboardDetectorNode(Node):
 
     def process_single_image(self, frame):
         h, w = frame.shape[:2]
-        crop_w = int(w * 0.4)
-        crop_h = int(h * 0.4)
+        crop_w = int(w * 0.6)
+        crop_h = int(h * 0.6)
         x0 = max(0, w // 2 - crop_w // 2)
         y0 = max(0, h // 2 - crop_h // 2)
         if crop_w < 100 or crop_h < 100 or x0 + crop_w > w or y0 + crop_h > h:
             self.get_logger().warn("无效裁剪区域")
             return
 
-        frame = frame[y0:y0 + crop_h, x0:x0 + crop_w]
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        frame_crop = frame[y0:y0 + crop_h, x0:x0 + crop_w]
+        gray = cv2.cvtColor(frame_crop, cv2.COLOR_BGR2GRAY)
         blur = cv2.GaussianBlur(gray, (5, 5), 0)
         edges = cv2.Canny(blur, 50, 150)
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+        dilated = cv2.dilate(edges, kernel, iterations=1)
+        eroded = cv2.erode(dilated, kernel, iterations=1)
 
-        contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        contours, _ = cv2.findContours(eroded, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         board_rect = self.find_largest_rectangle(contours)
 
         if board_rect is not None:
-            self.missed_frames = 0
             color = (0, 255, 0)
         else:
-            board_rect = self.predict_next_rectangle()
-            if board_rect is not None:
-                color = (0, 255, 255)
-            else:
-                self.missed_frames = MAX_MISSED_FRAMES
-                self.get_logger().warn("无法预测矩形")
-                return
-            self.missed_frames += 1
-            if self.missed_frames >= MAX_MISSED_FRAMES:
-                self.rect_filters.clear()
-                self.get_logger().info("连续丢失太多帧，重置滤波器")
-                return
+            self.get_logger().warn("未检测到棋盘")
+            return
 
-        cv2.polylines(frame, [board_rect], isClosed=True, color=color, thickness=3)
-        self.draw_grid_numbers(frame, board_rect)
+        cv2.polylines(frame_crop, [board_rect], isClosed=True, color=color, thickness=3)
         angle = self.calculate_rotation_angle(board_rect)
         text = f"Angle: {angle:.2f} deg"
-        cv2.putText(frame, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+        cv2.putText(frame_crop, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+
+        # 透视变换得到正方形棋盘图像
+        width = max(np.linalg.norm(board_rect[0] - board_rect[1]),
+                    np.linalg.norm(board_rect[2] - board_rect[3]))
+        height = max(np.linalg.norm(board_rect[0] - board_rect[3]),
+                     np.linalg.norm(board_rect[1] - board_rect[2]))
+        size = int(max(width, height))
+        dst = np.array([
+            [0, 0], [size - 1, 0], [size - 1, size - 1], [0, size - 1]
+        ], dtype="float32")
+        M = cv2.getPerspectiveTransform(board_rect.astype(np.float32), dst)
+        warp = cv2.warpPerspective(frame_crop, M, (size, size))
+
+        self.detect_and_publish_chess_pieces(warp, board_rect)
 
         with self.lock:
-            cv2.imshow("Chessboard Detection", frame)
-            cv2.imshow("Edges", edges)
+            cv2.imshow("Chessboard Detection", frame_crop)
+            cv2.imshow("Warped Board", warp)
             cv2.waitKey(1)
 
     def find_largest_rectangle(self, contours):
@@ -162,7 +165,7 @@ class ChessboardDetectorNode(Node):
 
             angles = []
             for i in range(4):
-                p1, p2, p3 = rect[i], rect[(i+1)%4], rect[(i+2)%4]
+                p1, p2, p3 = rect[i], rect[(i + 1) % 4], rect[(i + 2) % 4]
                 v1 = p2 - p1
                 v2 = p3 - p2
                 cos_angle = np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2) + 1e-6)
@@ -198,73 +201,81 @@ class ChessboardDetectorNode(Node):
         self.rect_filters = new_filters
         return smoothed_rect
 
-    def predict_next_rectangle(self):
-        if len(self.rect_filters) != 4:
-            return None
-        predicted_rect = np.zeros((4, 2), dtype=np.int32)
-        for i in range(4):
-            kf = self.rect_filters.get(i)
-            if kf is None:
-                return None
-            pred = kf.predict()
-            predicted_rect[i] = [int(pred[0]), int(pred[1])]
-        return predicted_rect
-
     def order_points(self, pts):
         rect = np.zeros((4, 2), dtype="float32")
         s = pts.sum(axis=1)
-        rect[0] = pts[np.argmin(s)]
-        rect[2] = pts[np.argmax(s)]
         diff = np.diff(pts, axis=1)
-        rect[1] = pts[np.argmin(diff)]
-        rect[3] = pts[np.argmax(diff)]
-        return rect.astype(np.int32)
+        rect[0] = pts[np.argmin(s)]  # top-left
+        rect[2] = pts[np.argmax(s)]  # bottom-right
+        rect[1] = pts[np.argmin(diff)]  # top-right
+        rect[3] = pts[np.argmax(diff)]  # bottom-left
+        return rect
 
-    def draw_grid_numbers(self, image, board_rect):
-        width = max(np.linalg.norm(board_rect[0] - board_rect[1]),
-                    np.linalg.norm(board_rect[2] - board_rect[3]))
-        height = max(np.linalg.norm(board_rect[0] - board_rect[3]),
-                     np.linalg.norm(board_rect[1] - board_rect[2]))
-        size = int(max(width, height))
-        dst = np.array([
-            [0, 0], [size-1, 0], [size-1, size-1], [0, size-1]
-        ], dtype="float32")
-        M = cv2.getPerspectiveTransform(board_rect.astype(np.float32), dst)
-        warp = cv2.warpPerspective(image, M, (size, size))
-        cell_size = size // 3
+    def detect_circles(self, warp, cell_size):
+        gray = cv2.cvtColor(warp, cv2.COLOR_BGR2GRAY)
+        edges = cv2.Canny(gray, 50, 150)
+        circles = cv2.HoughCircles(
+            edges,
+            cv2.HOUGH_GRADIENT,
+            dp=1,
+            minDist=cell_size // 4,
+            param1=100,
+            param2=30,
+            minRadius=cell_size // 6,
+            maxRadius=cell_size // 2
+        )
+        if circles is not None:
+            return np.uint16(np.around(circles[0]))
+        return []
 
-        for i in range(3):
-            for j in range(3):
-                x, y = j * cell_size, i * cell_size
-                cell = warp[y:y+cell_size, x:x+cell_size]
-                gray_cell = cv2.cvtColor(cell, cv2.COLOR_BGR2GRAY)
-                blur = cv2.GaussianBlur(gray_cell, (5, 5), 0)
-                _, thresh = cv2.threshold(blur, 50, 255, cv2.THRESH_BINARY_INV)
-                white_pixels = cv2.countNonZero(thresh)
-                area = cell_size * cell_size
-                if white_pixels / area > 0.05:
-                    number = i * 3 + j + 1
-                    cx = x + cell_size // 2
-                    cy = y + cell_size // 2
-                    cv2.putText(warp, str(number), (cx - 10, cy + 10),
-                                cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 0, 255), 3)
+    def get_grid_index(self, cx, cy, cell_size):
+        col = cx // cell_size
+        row = cy // cell_size
+        if 0 <= col < 3 and 0 <= row < 3:
+            return int(row * 3 + col + 1)  # 返回格子编号1~9
+        return None
 
-        Minv = cv2.getPerspectiveTransform(dst, board_rect.astype(np.float32))
-        warp_back = cv2.warpPerspective(warp, Minv, (image.shape[1], image.shape[0]))
-        gray_warp = cv2.cvtColor(warp_back, cv2.COLOR_BGR2GRAY)
-        _, mask = cv2.threshold(gray_warp, 10, 255, cv2.THRESH_BINARY)
-        mask_inv = cv2.bitwise_not(mask)
-        img_bg = cv2.bitwise_and(image, image, mask=mask_inv)
-        img_fg = cv2.bitwise_and(warp_back, warp_back, mask=mask)
-        image[:] = cv2.add(img_bg, img_fg)
+    def detect_and_publish_chess_pieces(self, warp, board_rect):
+        cell_size = warp.shape[0] // 3
+        circles = self.detect_circles(warp, cell_size)
+        for idx in range(1, 10):
+            move_msg = ChessMove()
+            move_msg.grid_index = idx
+            move_msg.color = " "  # 空格子
+            self.move_publisher.publish(move_msg)
+
+        if len(circles) == 0:
+            return
+
+        for (cx, cy, r) in circles:
+            grid_index = self.get_grid_index(cx, cy, cell_size)
+            if grid_index is None:
+                continue
+
+            mask = np.zeros((warp.shape[0], warp.shape[1]), dtype=np.uint8)
+            cv2.circle(mask, (cx, cy), r, 255, -1)
+            mean_val = cv2.mean(warp, mask=mask)[0:3]
+            brightness = sum(mean_val) / 3
+            if brightness < 120:
+                color = "black" 
+            elif brightness > 150:
+                color = "white"
+            else:
+                color = " "
+
+            cv2.circle(warp, (cx, cy), r, (0, 255, 0), 2)
+            cv2.putText(warp, color, (cx - 20, cy), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1)
+
+            move_msg = ChessMove()
+            move_msg.grid_index = grid_index
+            move_msg.color = color
+            self.move_publisher.publish(move_msg)
 
     def destroy_node(self):
-        self.get_logger().info("正在关闭节点...")
         self.shutdown_event.set()
         self.processing_thread.join()
-        super().destroy_node()
         cv2.destroyAllWindows()
-
+        super().destroy_node()
 
 def main(args=None):
     rclpy.init(args=args)
@@ -272,10 +283,10 @@ def main(args=None):
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
-        node.get_logger().info("收到终止信号，关闭节点")
+        node.get_logger().info('节点关闭')
     finally:
         node.destroy_node()
         rclpy.shutdown()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

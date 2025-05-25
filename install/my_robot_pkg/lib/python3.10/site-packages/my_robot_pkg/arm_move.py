@@ -34,6 +34,7 @@ class ArmMoveWithInput(Node):
         self.moveit2.planner_id = "RRTConnect"
         self.moveit2.max_velocity = 1.0
         self.moveit2.max_acceleration = 1.0
+        self.black=0
 
         # TF2监听器
         self.tf_buffer = tf2_ros.Buffer()
@@ -43,20 +44,57 @@ class ArmMoveWithInput(Node):
                                                 "/move",
                                                 self.move,
                                                 1)
+        self.grip_publisher = self.create_publisher(Int8, '/grip', 10)                                        
 
         self.commands = {
             "init": ([0.3272, 0.042798, 0.35154], [0.498732, 0.510627, 0.500207, 0.49223]),
-            "0": ([0.088, 0.2013, 0.2350], [0.6972, 0.7167, 0.010, 0.0111]),
-            "4": ([0.345, 0.009, 0.071], [1.0, 0.0, 0.0, 0.0]),
-            "5": ([0.345, 0.040, 0.071], [1.0, 0.0, 0.0, 0.0]),
-            "6": ([0.345, 0.075, 0.071], [1.0, 0.0, 0.0, 0.0]),
-            "7": ([0.375, 0.009, 0.078], [1.0, 0.0, 0.0, 0.0]),
-            "8": ([0.375, 0.040, 0.078], [1.0, 0.0, 0.0, 0.0]),
-            "9": ([0.375, 0.075, 0.078], [1.0, 0.0, 0.0, 0.0]),
-            "1": ([0.315, 0.009, 0.066], [1.0, 0.0, 0.0, 0.0]),
-            "2": ([0.315, 0.040, 0.066], [1.0, 0.0, 0.0, 0.0]),
-            "3": ([0.315, 0.075, 0.066], [1.0, 0.0, 0.0, 0.0])
+            "0": ([0.26244, 0.043087, 0.23896], [1.0, 0.0, 0.0, 0.0]),
+            "4": ([0.36085, 0.0085, 0.02691], [1.0, 0.0, 0.0, 0.0]),
+            "5": ([0.36106, 0.0417, 0.02721], [1.0, 0.0, 0.0, 0.0]),
+            "6": ([0.36100, 0.07840, 0.02743], [1.0, 0.0, 0.0, 0.0]),
+            "7": ([0.3907, 0.011423, 0.033833], [1.0, 0.0, 0.0, 0.0]),
+            "8": ([0.3907, 0.04584, 0.033833], [1.0, 0.0, 0.0, 0.0]),
+            "9": ([0.3907, 0.078521, 0.033793], [1.0, 0.0, 0.0, 0.0]),
+            "1": ([0.32752, 0.0017, 0.02017], [1.0, 0.0, 0.0, 0.0]),
+            "2": ([0.327723, 0.0368313, 0.0206634], [1.0, 0.0, 0.0, 0.0]),
+            "3": ([0.32748, 0.07406, 0.02017], [1.0, 0.0, 0.0, 0.0]),
+
+            "black_1": ([0.3277, 0.2342, 0.0320], [1.0, 0.0, 0.0, 0.0]),
+            "black_2": ([0.3026, 0.2368, 0.0261], [1.0, 0.0, 0.0, 0.0]),
+            "black_3": ([0.2731, 0.2363, 0.0245], [1.0, 0.0, 0.0, 0.0]),
+            "black_4": ([0.2393, 0.2358, 0.0176], [1.0, 0.0, 0.0, 0.0]),
+            "black_5": ([0.2084, 0.2352, 0.0156], [1.0, 0.0, 0.0, 0.0])
         }
+        self.grip={            
+            "black_1": ([0.3277, 0.2342, 0.0320], [1.0, 0.0, 0.0, 0.0]),
+            "black_2": ([0.3026, 0.2368, 0.0261], [1.0, 0.0, 0.0, 0.0]),
+            "black_3": ([0.2731, 0.2363, 0.0245], [1.0, 0.0, 0.0, 0.0]),
+            "black_4": ([0.2393, 0.2358, 0.0176], [1.0, 0.0, 0.0, 0.0]),
+            "black_5": ([0.2084, 0.2352, 0.0156], [1.0, 0.0, 0.0, 0.0])
+            }
+
+    def wait_until_success(self, command: str, retry_delay=1):
+        """发送命令并等待返回 True"""
+        while True:
+            success = self.send_command(command)
+            if success:
+                return
+            time.sleep(retry_delay)
+
+    def move_demo_1(self):
+        move_msg= Int8()
+        move_msg.data=1
+        self.grip_publisher.publish(move_msg)
+        self.wait_until_success("black_1")
+        self.black += 1
+        self.wait_until_success("0")
+        self.wait_until_success("1")
+        move_msg= Int8()
+        move_msg.data=0
+        self.grip_publisher.publish(move_msg)
+        self.wait_until_success("0")
+        self.get_logger().info("动作结束")
+
     
     def move(self,msg):
         mode = msg.data
@@ -96,7 +134,7 @@ class ArmMoveWithInput(Node):
 
 
             reached = False
-            timeout = 10.0  # 最长等待时间（秒）
+            timeout = 5.0  # 最长等待时间（秒）
             start_time = time.time()
 
             while time.time() - start_time < timeout:
@@ -112,6 +150,7 @@ class ArmMoveWithInput(Node):
 
             if reached:
                 self.get_logger().info("机械臂末端已到达目标位置")
+                return True
             else:
                 self.get_logger().warn("机械臂末端未在限定时间内到达目标位置")
 
@@ -137,7 +176,8 @@ def main():
                 node.get_logger().info("退出程序")
                 break
             elif user_input in node.commands:
-                node.send_command(user_input)
+                #node.send_command(user_input)
+                node.move_demo_1()
             else:
                 node.get_logger().warn(f"未定义的命令：{user_input}")
             time.sleep(0.1)

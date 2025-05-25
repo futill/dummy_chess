@@ -2,7 +2,7 @@ from PySide6.QtWidgets import (
     QApplication, QWidget, QPushButton, QGridLayout, QLabel, QHBoxLayout, QVBoxLayout
 )
 from PySide6.QtGui import QFont
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QTimer, QMetaObject, Qt, Q_ARG, Slot
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
@@ -15,16 +15,16 @@ class ChessGUI(QWidget):
         super().__init__()
         self.ros_node = ros_node
         self.setWindowTitle("井字棋 ROS2 控制界面")
-        self.grid = [QLabel("") for _ in range(9)]           # ROS接收棋盘
-        self.input_grid = [QLabel("") for _ in range(9)]     # 可点击交互棋盘
-        self.input_states = [None for _ in range(9)]         # 状态：black/white/None
+        self.grid = [QLabel("") for _ in range(9)]
+        self.input_grid = [QLabel("") for _ in range(9)]
+        self.input_states = [None for _ in range(9)]
         self.current_color = "black"
         self.init_ui()
 
     def init_ui(self):
         main_layout = QHBoxLayout()
 
-        # ===== 左侧 ROS 显示棋盘 =====
+        # ROS 显示棋盘
         ros_layout = QGridLayout()
         ros_label = QLabel("ROS 棋盘")
         ros_label.setFont(QFont("Arial", 14))
@@ -35,15 +35,13 @@ class ChessGUI(QWidget):
             label.setFont(QFont("Arial", 20))
             label.setFixedSize(100, 100)
             label.setStyleSheet("border: 1px solid black;")
-            # 默认数字，字体颜色灰，居中，棋子覆盖后数字被替换
             label.setText(f"<div align='center' style='color:gray;'>{i + 1}</div>")
             ros_layout.addWidget(label, 1 + i // 3, i % 3)
 
         main_layout.addLayout(ros_layout)
 
-        # ===== 右侧 可点击棋盘与控制 =====
+        # 输入棋盘
         right_layout = QVBoxLayout()
-
         input_label = QLabel("输入棋盘")
         input_label.setFont(QFont("Arial", 14))
         right_layout.addWidget(input_label)
@@ -60,25 +58,21 @@ class ChessGUI(QWidget):
 
         right_layout.addLayout(input_grid_layout)
 
-        # 控制按钮布局
+        # 控制按钮
         control_layout = QGridLayout()
 
-        # 切换颜色
         self.color_btn = QPushButton("当前颜色：⚫（点我切换）")
         self.color_btn.clicked.connect(self.toggle_color)
         control_layout.addWidget(self.color_btn, 0, 0)
 
-        # 确认按钮
         confirm_btn = QPushButton("确认发送输入")
         confirm_btn.clicked.connect(self.send_input_moves)
         control_layout.addWidget(confirm_btn, 0, 1)
 
-        # 清空按钮
         clear_btn = QPushButton("清空输入棋盘")
         clear_btn.clicked.connect(self.clear_input_grid)
         control_layout.addWidget(clear_btn, 0, 2)
 
-        # 任务按钮
         task_btns = [
             ("任务 1", self.task1),
             ("任务 2", self.task2),
@@ -91,8 +85,8 @@ class ChessGUI(QWidget):
             control_layout.addWidget(btn, 1 + i // 2, i % 2)
 
         right_layout.addLayout(control_layout)
-
         main_layout.addLayout(right_layout)
+
         self.setLayout(main_layout)
 
     def toggle_color(self):
@@ -143,14 +137,18 @@ class ChessGUI(QWidget):
         msg.data = "start_match"
         self.ros_node.match_start_pub.publish(msg)
 
+    @Slot(int, str)
+    def update_grid_safe(self, index, color):
+        self.update_grid(index-1, color)
+
     def update_grid(self, index, color):
-        if color == "black":
-            self.grid[index].setText("⚫")
-        elif color == "white":
-            self.grid[index].setText("⚪")
-        else:
-            # 恢复数字显示
-            self.grid[index].setText(f"<div align='center' style='color:gray;'>{index + 1}</div>")
+        if 0 <= index < 9:
+            if color == "black":
+                self.grid[index].setText("⚫")
+            elif color == "white":
+                self.grid[index].setText("⚪")
+            else:
+                self.grid[index].setText(f"<div align='center' style='color:gray;'>{index + 1}</div>")
 
 
 class GuiNode(Node):
@@ -161,13 +159,19 @@ class GuiNode(Node):
         self.match_start_pub = self.create_publisher(String, '/start_match', 10)
         self.subscription = self.create_subscription(
             ChessMove,
-            'chess_state',
+            '/chess_state',
             self.chess_state_callback,
             10
         )
 
     def chess_state_callback(self, msg):
-        self.gui.update_grid(msg.grid_index, msg.color)
+        QMetaObject.invokeMethod(
+            self.gui,
+            "update_grid_safe",
+            Qt.QueuedConnection,
+            Q_ARG(int, msg.grid_index),
+            Q_ARG(str, msg.color)
+        )
 
 
 def main():
