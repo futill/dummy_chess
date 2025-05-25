@@ -9,6 +9,7 @@
 /home/futill/targer_ws/install/my_robot_pkg/share/ament_index/resource_index/packages/my_robot_pkg
 /home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/package.xml
 /home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/launch/demo.launch.py
+/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/launch/chess_test.launch.py
 /home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg-0.0.0-py3.10.egg-info/top_level.txt
 /home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg-0.0.0-py3.10.egg-info/SOURCES.txt
 /home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg-0.0.0-py3.10.egg-info/entry_points.txt

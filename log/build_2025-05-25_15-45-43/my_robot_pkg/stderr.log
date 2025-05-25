@@ -1,0 +1,5 @@
+  File "/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg/arm_move.py", line 99
+    elif action[0] == 'chess':
+    ^^^^
+SyntaxError: invalid syntax
+

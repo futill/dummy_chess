@@ -8,7 +8,8 @@ from rclpy.node import Node
 from std_msgs.msg import String
 from my_robot_pkg_msg.msg import ChessMove
 from threading import Thread
-
+import time
+from std_msgs.msg import Bool
 
 class ChessGUI(QWidget):
     def __init__(self, ros_node):
@@ -65,9 +66,6 @@ class ChessGUI(QWidget):
         self.color_btn.clicked.connect(self.toggle_color)
         control_layout.addWidget(self.color_btn, 0, 0)
 
-        confirm_btn = QPushButton("确认发送输入")
-        confirm_btn.clicked.connect(self.send_input_moves)
-        control_layout.addWidget(confirm_btn, 0, 1)
 
         clear_btn = QPushButton("清空输入棋盘")
         clear_btn.clicked.connect(self.clear_input_grid)
@@ -99,13 +97,6 @@ class ChessGUI(QWidget):
         icon = "⚪" if self.current_color == "white" else "⚫"
         self.input_grid[idx].setText(icon)
 
-    def send_input_moves(self):
-        for idx, color in enumerate(self.input_states):
-            if color:
-                msg = ChessMove()
-                msg.grid_index = idx
-                msg.color = color
-                self.ros_node.publisher.publish(msg)
 
     def clear_input_grid(self):
         for i in range(9):
@@ -117,20 +108,34 @@ class ChessGUI(QWidget):
         msg.grid_index = 4
         msg.color = "black"
         self.ros_node.publisher.publish(msg)
-
     def task2(self):
-        for i, color in zip([0, 1, 2, 3], ["black", "black", "white", "white"]):
+        moves = [(i, color) for i, color in enumerate(self.input_states) if color is not None]
+        if not moves:
+            print("输入棋盘为空，请先在输入棋盘上放置棋子！")
+            return
+        for index, color in moves:
             msg = ChessMove()
-            msg.grid_index = i
+            msg.grid_index = index
             msg.color = color
             self.ros_node.publisher.publish(msg)
+            self.ros_node.get_logger().info(f"任务 2: 发布 ChessMove (grid_index={index}, color={color})")
+            time.sleep(0.5)
+        msg = Bool()
+        msg.data = True
+        self.ros_node.start_exec.publish(msg)
 
     def task3(self):
-        for i, color in zip([0, 2, 6, 8], ["black", "black", "white", "white"]):
+        moves = [(i, color) for i, color in enumerate(self.input_states) if color is not None]
+        if not moves:
+            print("输入棋盘为空，请先在输入棋盘上放置棋子！")
+            return
+        for index, color in moves:
             msg = ChessMove()
-            msg.grid_index = i
+            msg.grid_index = index
             msg.color = color
             self.ros_node.publisher.publish(msg)
+            self.ros_node.get_logger().info(f"任务 2: 发布 ChessMove (grid_index={index}, color={color})")
+            time.sleep(0.5)  # 简单延时，等待消息处理
 
     def task4(self):
         msg = String()
@@ -155,7 +160,8 @@ class GuiNode(Node):
     def __init__(self, gui):
         super().__init__('qt_gui_node')
         self.gui = gui
-        self.publisher = self.create_publisher(ChessMove, '/chess_move', 10)
+        self.publisher = self.create_publisher(ChessMove, '/move', 10)
+        self.start_exec = self.create_publisher(Bool, '/start_exec', 10)
         self.match_start_pub = self.create_publisher(String, '/start_match', 10)
         self.subscription = self.create_subscription(
             ChessMove,
@@ -163,7 +169,6 @@ class GuiNode(Node):
             self.chess_state_callback,
             10
         )
-
     def chess_state_callback(self, msg):
         QMetaObject.invokeMethod(
             self.gui,

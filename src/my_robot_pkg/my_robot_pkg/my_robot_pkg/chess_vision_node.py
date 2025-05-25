@@ -10,6 +10,7 @@ import queue
 import time
 import math
 from my_robot_pkg_msg.msg import ChessMove
+from std_msgs.msg import Int8
 
 class ChessboardDetectorNode(Node):
     def __init__(self):
@@ -98,10 +99,29 @@ class ChessboardDetectorNode(Node):
             return
 
         frame_crop = frame[y0:y0 + crop_h, x0:x0 + crop_w]
-        gray = cv2.cvtColor(frame_crop, cv2.COLOR_BGR2GRAY)
+        # 假设 frame_crop 已经是裁剪过的图像
+        hsv = cv2.cvtColor(frame_crop, cv2.COLOR_BGR2HSV)
+
+        # 设定黑色的 HSV 范围（可以根据实际图像微调）
+        lower_black = np.array([0, 0, 0])
+        upper_black = np.array([180, 255, 100])  # V 值较低是黑色
+
+        # 创建掩码，提取黑色区域
+        mask_black = cv2.inRange(hsv, lower_black, upper_black)
+
+        # 可选：做开操作去除小噪声
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+        mask_clean = cv2.morphologyEx(mask_black, cv2.MORPH_OPEN, kernel)
+
+        # 用掩码提取黑色前景
+        foreground = cv2.bitwise_and(frame_crop, frame_crop, mask=mask_clean)
+
+        # 转为灰度进行后续处理
+        gray = cv2.cvtColor(foreground, cv2.COLOR_BGR2GRAY)
         blur = cv2.GaussianBlur(gray, (5, 5), 0)
         edges = cv2.Canny(blur, 50, 150)
-        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+
+        # 膨胀与腐蚀
         dilated = cv2.dilate(edges, kernel, iterations=1)
         eroded = cv2.erode(dilated, kernel, iterations=1)
 
@@ -134,7 +154,7 @@ class ChessboardDetectorNode(Node):
         self.detect_and_publish_chess_pieces(warp, board_rect)
 
         with self.lock:
-            cv2.imshow("Chessboard Detection", frame_crop)
+            #cv2.imshow("Chessboard Detection", frame_crop)
             cv2.imshow("Warped Board", warp)
             cv2.waitKey(1)
 

@@ -48,6 +48,6 @@ def generate_launch_description():
     return LaunchDescription([
         dummy2_can2eth_server_node,
         realsense,
-        #move_node,
+        move_node,
         ar_moveit,   # <-- 现在是合法的 IncludeLaunchDescription
     ])
