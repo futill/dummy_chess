@@ -31,10 +31,15 @@ class ChessboardDetectorNode(Node):
         self.shutdown_event = threading.Event()
 
         self.rect_filters = {}
+        self.circle_filters = {} 
+        self.tracked_circles = []  # 每项是 dict: {'id': int, 'kf': KalmanFilter, 'last_seen': frame_count, 'pos': (x, y)}
+        self.next_circle_id = 0
+        self.frame_count = 0
         self.processing_thread = threading.Thread(target=self.process_images)
         self.processing_thread.daemon = True
         self.processing_thread.start()
         self.get_logger().info("图像处理线程已启动")
+        
 
     def init_kalman_filter(self):
         kf = cv2.KalmanFilter(4, 2)
@@ -55,18 +60,12 @@ class ChessboardDetectorNode(Node):
         return kf
 
     def image_callback(self, msg):
-        try:
-            frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
-        except Exception as e:
-            self.get_logger().error(f"图像转换错误：{e}")
-            return
+        frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         if frame is None or frame.size == 0:
             self.get_logger().error("接收到无效图像")
             return
-        try:
-            self.image_queue.put_nowait((frame, time.time()))
-        except queue.Full:
-            self.get_logger().warn("图像队列已满，丢弃新图像")
+        self.image_queue.put_nowait((frame, time.time()))
+
 
     def process_images(self):
         while not self.shutdown_event.is_set():
@@ -131,8 +130,20 @@ class ChessboardDetectorNode(Node):
         if board_rect is not None:
             color = (0, 255, 0)
         else:
-            self.get_logger().warn("未检测到棋盘")
-            return
+            # 如果没有检测到棋盘，但已有卡尔曼滤波器，使用预测框
+            if len(self.rect_filters) == 4:
+                predicted_rect = np.zeros((4, 2), dtype=np.int32)
+                for i in range(4):
+                    kf = self.rect_filters[i]
+                    predicted = kf.predict()
+                    predicted_rect[i] = [int(predicted[0]), int(predicted[1])]
+                board_rect = predicted_rect
+                color = (0, 255, 255)  # 黄色表示使用的是预测框
+                #self.get_logger().warn("未检测到棋盘，使用卡尔曼预测框")
+            else:
+                #self.get_logger().warn("未检测到棋盘，也无预测框可用")
+                return
+
 
         cv2.polylines(frame_crop, [board_rect], isClosed=True, color=color, thickness=3)
         angle = self.calculate_rotation_angle(board_rect)
@@ -232,21 +243,53 @@ class ChessboardDetectorNode(Node):
         return rect
 
     def detect_circles(self, warp, cell_size):
+        self.frame_count += 1
         gray = cv2.cvtColor(warp, cv2.COLOR_BGR2GRAY)
         edges = cv2.Canny(gray, 50, 150)
-        circles = cv2.HoughCircles(
-            edges,
-            cv2.HOUGH_GRADIENT,
-            dp=1,
-            minDist=cell_size // 4,
-            param1=100,
-            param2=30,
-            minRadius=cell_size // 6,
-            maxRadius=cell_size // 2
-        )
-        if circles is not None:
-            return np.uint16(np.around(circles[0]))
-        return []
+        circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1, cell_size//4,
+                                    param1=100, param2=30,
+                                    minRadius=cell_size//6, maxRadius=cell_size//2)
+        detected = np.uint16(np.around(circles[0])) if circles is not None else []
+
+        matched_ids = set()
+        for (x, y, r) in detected:
+            best_match = None
+            best_dist = float('inf')
+            for obj in self.tracked_circles:
+                px, py = obj['pos']
+                dist = np.hypot(x - px, y - py)
+                if dist < cell_size // 2 and obj['id'] not in matched_ids:
+                    if dist < best_dist:
+                        best_match = obj
+                        best_dist = dist
+
+            if best_match:
+                kf = best_match['kf']
+                kf.predict()
+                corrected = kf.correct(np.array([[np.float32(x)], [np.float32(y)]]))
+                x_f, y_f = int(corrected[0]), int(corrected[1])
+                best_match['pos'] = (x_f, y_f)
+                best_match['last_seen'] = self.frame_count
+                matched_ids.add(best_match['id'])
+            else:
+                # 新圆，分配一个滤波器
+                kf = self.init_kalman_filter()
+                kf.statePost = np.array([[x], [y], [0], [0]], dtype=np.float32)
+                self.tracked_circles.append({
+                    'id': self.next_circle_id,
+                    'kf': kf,
+                    'pos': (x, y),
+                    'last_seen': self.frame_count
+                })
+                self.next_circle_id += 1
+
+        # 清除长期未更新的圆
+        self.tracked_circles = [obj for obj in self.tracked_circles if self.frame_count - obj['last_seen'] < 5]
+
+        return [(obj['pos'][0], obj['pos'][1], cell_size // 4) for obj in self.tracked_circles]
+
+
+
 
     def get_grid_index(self, cx, cy, cell_size):
         col = cx // cell_size
@@ -258,19 +301,16 @@ class ChessboardDetectorNode(Node):
     def detect_and_publish_chess_pieces(self, warp, board_rect):
         cell_size = warp.shape[0] // 3
         circles = self.detect_circles(warp, cell_size)
-        for idx in range(1, 10):
-            move_msg = ChessMove()
-            move_msg.grid_index = idx
-            move_msg.color = " "  # 空格子
-            self.move_publisher.publish(move_msg)
 
-        if len(circles) == 0:
-            return
+
+        # 用于标记哪些格子被占用
+        occupied_grids = set()
 
         for (cx, cy, r) in circles:
             grid_index = self.get_grid_index(cx, cy, cell_size)
             if grid_index is None:
                 continue
+            occupied_grids.add(grid_index)
 
             mask = np.zeros((warp.shape[0], warp.shape[1]), dtype=np.uint8)
             cv2.circle(mask, (cx, cy), r, 255, -1)
@@ -290,6 +330,15 @@ class ChessboardDetectorNode(Node):
             move_msg.grid_index = grid_index
             move_msg.color = color
             self.move_publisher.publish(move_msg)
+
+        # 对未被占用的格子发布“空”
+        for idx in range(1, 10):
+            if idx not in occupied_grids:
+                move_msg = ChessMove()
+                move_msg.grid_index = idx
+                move_msg.color = " "
+                self.move_publisher.publish(move_msg)
+
 
     def destroy_node(self):
         self.shutdown_event.set()

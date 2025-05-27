@@ -1,0 +1,4 @@
+  File "/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg/chess_vision_node.py", line 70
+    def process_images(self):
+SyntaxError: expected 'except' or 'finally' block
+

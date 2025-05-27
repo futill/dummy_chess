@@ -1,0 +1,228 @@
+[0.133s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.133s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7e6d4bb171c0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7e6d4bad0ac0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7e6d4bad0ac0>>)
+[0.343s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.343s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.343s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.343s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.343s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.343s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.343s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/futill/targer_ws'
+[0.343s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.343s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.343s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.344s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.344s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.344s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.344s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.344s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.344s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.359s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extensions ['ignore', 'ignore_ament_install']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extension 'ignore'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extension 'ignore_ament_install'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extensions ['colcon_pkg']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extension 'colcon_pkg'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extensions ['colcon_meta']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extension 'colcon_meta'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extensions ['ros']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extension 'ros'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extensions ['cmake', 'python']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extension 'cmake'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extension 'python'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extensions ['python_setup_py']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(Log) by extension 'python_setup_py'
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.360s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.361s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extensions ['ignore', 'ignore_ament_install']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extension 'ignore'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extension 'ignore_ament_install'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extensions ['colcon_pkg']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extension 'colcon_pkg'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extensions ['colcon_meta']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extension 'colcon_meta'
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extensions ['ros']
+[0.362s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extension 'ros'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extensions ['cmake', 'python']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extension 'cmake'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extension 'python'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extensions ['python_setup_py']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg) by extension 'python_setup_py'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg) by extensions ['ignore', 'ignore_ament_install']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg) by extension 'ignore'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg) by extension 'ignore_ament_install'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg) by extensions ['colcon_pkg']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg) by extension 'colcon_pkg'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg) by extensions ['colcon_meta']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg) by extension 'colcon_meta'
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg) by extensions ['ros']
+[0.363s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg) by extension 'ros'
+[0.366s] DEBUG:colcon.colcon_core.package_identification:Package 'src/my_robot_pkg/my_robot_pkg' with type 'ros.ament_python' and name 'my_robot_pkg'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg_msg) by extensions ['ignore', 'ignore_ament_install']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg_msg) by extension 'ignore'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg_msg) by extension 'ignore_ament_install'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg_msg) by extensions ['colcon_pkg']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg_msg) by extension 'colcon_pkg'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg_msg) by extensions ['colcon_meta']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg_msg) by extension 'colcon_meta'
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg_msg) by extensions ['ros']
+[0.367s] Level 1:colcon.colcon_core.package_identification:_identify(src/my_robot_pkg/my_robot_pkg_msg) by extension 'ros'
+[0.368s] DEBUG:colcon.colcon_core.package_identification:Package 'src/my_robot_pkg/my_robot_pkg_msg' with type 'ros.ament_cmake' and name 'my_robot_pkg_msg'
+[0.368s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.368s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.368s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.368s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.368s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.419s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.420s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.422s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/futill/targer_ws/install
+[0.423s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 16 installed packages in /home/futill/dummy2_hand_eye_calibration_ws/install
+[0.425s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 386 installed packages in /opt/ros/humble
+[0.427s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg_msg' build argument 'cmake_args' from command line to 'None'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg_msg' build argument 'cmake_target' from command line to 'None'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg_msg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg_msg' build argument 'cmake_clean_cache' from command line to 'False'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg_msg' build argument 'cmake_clean_first' from command line to 'False'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg_msg' build argument 'cmake_force_configure' from command line to 'False'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg_msg' build argument 'ament_cmake_args' from command line to 'None'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg_msg' build argument 'catkin_cmake_args' from command line to 'None'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg_msg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.483s] DEBUG:colcon.colcon_core.verb:Building package 'my_robot_pkg_msg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/futill/targer_ws/build/my_robot_pkg_msg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/futill/targer_ws/install/my_robot_pkg_msg', 'merge_install': False, 'path': '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg_msg', 'symlink_install': False, 'test_result_base': None}
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg' build argument 'cmake_args' from command line to 'None'
+[0.484s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg' build argument 'cmake_target' from command line to 'None'
+[0.484s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.484s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[0.484s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[0.484s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[0.484s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[0.484s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[0.484s] Level 5:colcon.colcon_core.verb:set package 'my_robot_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.484s] DEBUG:colcon.colcon_core.verb:Building package 'my_robot_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/futill/targer_ws/build/my_robot_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/futill/targer_ws/install/my_robot_pkg', 'merge_install': False, 'path': '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg', 'symlink_install': False, 'test_result_base': None}
+[0.484s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.486s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.486s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg_msg' with build type 'ament_cmake'
+[0.487s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg_msg'
+[0.492s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.493s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.493s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.507s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/futill/targer_ws/build/my_robot_pkg_msg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/futill/targer_ws/install/my_robot_pkg:/opt/ros/humble /usr/bin/cmake --build /home/futill/targer_ws/build/my_robot_pkg_msg -- -j8 -l8
+[1.090s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/futill/targer_ws/build/my_robot_pkg_msg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/futill/targer_ws/install/my_robot_pkg:/opt/ros/humble /usr/bin/cmake --build /home/futill/targer_ws/build/my_robot_pkg_msg -- -j8 -l8
+[1.104s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/futill/targer_ws/build/my_robot_pkg_msg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/futill/targer_ws/install/my_robot_pkg:/opt/ros/humble /usr/bin/cmake --install /home/futill/targer_ws/build/my_robot_pkg_msg
+[1.180s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_robot_pkg_msg)
+[1.181s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/futill/targer_ws/build/my_robot_pkg_msg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/futill/targer_ws/install/my_robot_pkg:/opt/ros/humble /usr/bin/cmake --install /home/futill/targer_ws/build/my_robot_pkg_msg
+[1.183s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg' for CMake module files
+[1.184s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg' for CMake config files
+[1.185s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_robot_pkg_msg', 'cmake_prefix_path')
+[1.185s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/cmake_prefix_path.ps1'
+[1.186s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/cmake_prefix_path.dsv'
+[1.187s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/cmake_prefix_path.sh'
+[1.188s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg/lib'
+[1.188s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_robot_pkg_msg', 'ld_library_path_lib')
+[1.188s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/ld_library_path_lib.ps1'
+[1.189s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/ld_library_path_lib.dsv'
+[1.189s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/ld_library_path_lib.sh'
+[1.190s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg/bin'
+[1.190s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg/lib/pkgconfig/my_robot_pkg_msg.pc'
+[1.190s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg/lib/python3.10/site-packages'
+[1.190s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg/bin'
+[1.191s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.ps1'
+[1.192s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.dsv'
+[1.192s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.sh'
+[1.194s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.bash'
+[1.195s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.zsh'
+[1.195s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/futill/targer_ws/install/my_robot_pkg_msg/share/colcon-core/packages/my_robot_pkg_msg)
+[1.197s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_robot_pkg_msg)
+[1.197s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg' for CMake module files
+[1.198s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg' for CMake config files
+[1.198s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_robot_pkg_msg', 'cmake_prefix_path')
+[1.199s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/cmake_prefix_path.ps1'
+[1.199s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/cmake_prefix_path.dsv'
+[1.200s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/cmake_prefix_path.sh'
+[1.201s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg/lib'
+[1.201s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_robot_pkg_msg', 'ld_library_path_lib')
+[1.201s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/ld_library_path_lib.ps1'
+[1.202s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/ld_library_path_lib.dsv'
+[1.203s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/hook/ld_library_path_lib.sh'
+[1.203s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg/bin'
+[1.203s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg/lib/pkgconfig/my_robot_pkg_msg.pc'
+[1.204s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg/lib/python3.10/site-packages'
+[1.204s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg_msg/bin'
+[1.205s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.ps1'
+[1.206s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.dsv'
+[1.207s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.sh'
+[1.207s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.bash'
+[1.208s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg_msg/share/my_robot_pkg_msg/package.zsh'
+[1.208s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/futill/targer_ws/install/my_robot_pkg_msg/share/colcon-core/packages/my_robot_pkg_msg)
+[1.209s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg' with build type 'ament_python'
+[1.209s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_robot_pkg', 'ament_prefix_path')
+[1.210s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/hook/ament_prefix_path.ps1'
+[1.210s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/hook/ament_prefix_path.dsv'
+[1.211s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/hook/ament_prefix_path.sh'
+[1.212s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.212s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.548s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg'
+[1.549s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.549s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.116s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg': CMAKE_PREFIX_PATH=/home/futill/targer_ws/install/my_robot_pkg_msg:/home/futill/dummy2_hand_eye_calibration_ws/install LD_LIBRARY_PATH=/home/futill/targer_ws/install/my_robot_pkg_msg/lib:/home/futill/dummy2_hand_eye_calibration_ws/install/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/home/futill/targer_ws/build/my_robot_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/my_robot_pkg build --build-base /home/futill/targer_ws/build/my_robot_pkg/build install --record /home/futill/targer_ws/build/my_robot_pkg/install.log --single-version-externally-managed install_data
+[2.501s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg' for CMake module files
+[2.502s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg' for CMake config files
+[2.502s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg' returned '0': CMAKE_PREFIX_PATH=/home/futill/targer_ws/install/my_robot_pkg_msg:/home/futill/dummy2_hand_eye_calibration_ws/install LD_LIBRARY_PATH=/home/futill/targer_ws/install/my_robot_pkg_msg/lib:/home/futill/dummy2_hand_eye_calibration_ws/install/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/home/futill/targer_ws/build/my_robot_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/my_robot_pkg build --build-base /home/futill/targer_ws/build/my_robot_pkg/build install --record /home/futill/targer_ws/build/my_robot_pkg/install.log --single-version-externally-managed install_data
+[2.503s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg/lib'
+[2.503s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg/bin'
+[2.503s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg/lib/pkgconfig/my_robot_pkg.pc'
+[2.503s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages'
+[2.503s] Level 1:colcon.colcon_core.shell:create_environment_hook('my_robot_pkg', 'pythonpath')
+[2.504s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/hook/pythonpath.ps1'
+[2.504s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/hook/pythonpath.dsv'
+[2.505s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/hook/pythonpath.sh'
+[2.505s] Level 1:colcon.colcon_core.environment:checking '/home/futill/targer_ws/install/my_robot_pkg/bin'
+[2.505s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(my_robot_pkg)
+[2.506s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/package.ps1'
+[2.506s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/package.dsv'
+[2.507s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/package.sh'
+[2.508s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/package.bash'
+[2.508s] INFO:colcon.colcon_core.shell:Creating package script '/home/futill/targer_ws/install/my_robot_pkg/share/my_robot_pkg/package.zsh'
+[2.509s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/futill/targer_ws/install/my_robot_pkg/share/colcon-core/packages/my_robot_pkg)
+[2.509s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.509s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.509s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[2.509s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.516s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.516s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.517s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.536s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.537s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/futill/targer_ws/install/local_setup.ps1'
+[2.538s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/futill/targer_ws/install/_local_setup_util_ps1.py'
+[2.540s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/futill/targer_ws/install/setup.ps1'
+[2.542s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/futill/targer_ws/install/local_setup.sh'
+[2.543s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/futill/targer_ws/install/_local_setup_util_sh.py'
+[2.544s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/futill/targer_ws/install/setup.sh'
+[2.545s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/futill/targer_ws/install/local_setup.bash'
+[2.546s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/futill/targer_ws/install/setup.bash'
+[2.547s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/futill/targer_ws/install/local_setup.zsh'
+[2.548s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/futill/targer_ws/install/setup.zsh'

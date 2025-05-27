@@ -1,0 +1,26 @@
+[0.642s] Invoking command in '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg': CMAKE_PREFIX_PATH=/home/futill/targer_ws/install/my_robot_pkg_msg:/home/futill/dummy2_hand_eye_calibration_ws/install LD_LIBRARY_PATH=/home/futill/targer_ws/install/my_robot_pkg_msg/lib:/home/futill/dummy2_hand_eye_calibration_ws/install/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/home/futill/targer_ws/build/my_robot_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/my_robot_pkg build --build-base /home/futill/targer_ws/build/my_robot_pkg/build install --record /home/futill/targer_ws/build/my_robot_pkg/install.log --single-version-externally-managed install_data
+[0.869s] running egg_info
+[0.869s] writing ../../../build/my_robot_pkg/my_robot_pkg.egg-info/PKG-INFO
+[0.869s] writing dependency_links to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/dependency_links.txt
+[0.870s] writing entry points to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/entry_points.txt
+[0.870s] writing requirements to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/requires.txt
+[0.870s] writing top-level names to ../../../build/my_robot_pkg/my_robot_pkg.egg-info/top_level.txt
+[0.872s] reading manifest file '../../../build/my_robot_pkg/my_robot_pkg.egg-info/SOURCES.txt'
+[0.872s] writing manifest file '../../../build/my_robot_pkg/my_robot_pkg.egg-info/SOURCES.txt'
+[0.872s] running build
+[0.873s] running build_py
+[0.873s] copying my_robot_pkg/gui.py -> /home/futill/targer_ws/build/my_robot_pkg/build/lib/my_robot_pkg
+[0.873s] running install
+[0.874s] running install_lib
+[0.874s] copying /home/futill/targer_ws/build/my_robot_pkg/build/lib/my_robot_pkg/gui.py -> /home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg
+[0.875s] byte-compiling /home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg/gui.py to gui.cpython-310.pyc
+[0.877s] running install_data
+[0.877s] running install_egg_info
+[0.879s] removing '/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[0.881s] Copying ../../../build/my_robot_pkg/my_robot_pkg.egg-info to /home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg-0.0.0-py3.10.egg-info
+[0.882s] running install_scripts
+[0.901s] Installing arm_move script to /home/futill/targer_ws/install/my_robot_pkg/lib/my_robot_pkg
+[0.902s] Installing chess_vision_node script to /home/futill/targer_ws/install/my_robot_pkg/lib/my_robot_pkg
+[0.903s] Installing gui script to /home/futill/targer_ws/install/my_robot_pkg/lib/my_robot_pkg
+[0.903s] writing list of installed files to '/home/futill/targer_ws/build/my_robot_pkg/install.log'
+[0.931s] Invoked command in '/home/futill/targer_ws/src/my_robot_pkg/my_robot_pkg' returned '0': CMAKE_PREFIX_PATH=/home/futill/targer_ws/install/my_robot_pkg_msg:/home/futill/dummy2_hand_eye_calibration_ws/install LD_LIBRARY_PATH=/home/futill/targer_ws/install/my_robot_pkg_msg/lib:/home/futill/dummy2_hand_eye_calibration_ws/install/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PYTHONPATH=/home/futill/targer_ws/build/my_robot_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/my_robot_pkg build --build-base /home/futill/targer_ws/build/my_robot_pkg/build install --record /home/futill/targer_ws/build/my_robot_pkg/install.log --single-version-externally-managed install_data

@@ -67,7 +67,7 @@ class ArmMoveWithInput(Node):
         self.commands = {
             "init": ([0.3272, 0.042798, 0.35154], [0.498732, 0.510627, 0.500207, 0.49223]),
             "0": ([0.228716, 0.040018, 0.241234], [0.0, 0.0, 0.71,0.7]),
-            "4": ([0.3350, 0.0250, 0.0], [0.0, 0.0, 0.71, 0.7]),
+            "4": ([0.3350, 0.0250, -0.008], [0.0, 0.0, 0.71, 0.7]),
             "5": ([0.3350, 0.0550, -0.008], [0.0, 0.0, 0.71, 0.7]),
             "6": ([0.3350, 0.0850, -0.008], [0.0, 0.0, 0.71, 0.7]),
             "7": ([0.3650, 0.0250, -0.008], [0.0, 0.0, 0.71, 0.7]),
@@ -77,11 +77,34 @@ class ArmMoveWithInput(Node):
             "2": ([0.305, 0.0550, -0.008], [0.0, 0.0, 0.71, 0.7]),
             "3": ([0.305, 0.0880, -0.008], [0.0, 0.0, 0.71, 0.7]),
 
+            "4_up": ([0.3350, 0.0250, 0.0], [0.0, 0.0, 0.71, 0.7]),
+            "5_up": ([0.3350, 0.0550, 0.05], [0.0, 0.0, 0.71, 0.7]),
+            "6_up": ([0.3350, 0.0850, 0.05], [0.0, 0.0, 0.71, 0.7]),
+            "7_up": ([0.3650, 0.0250, 0.05], [0.0, 0.0, 0.71, 0.7]),
+            "8_up": ([0.3650, 0.0550, 0.05], [0.0, 0.0, 0.71, 0.7]),
+            "9_up": ([0.3657, 0.0880, 0.05], [0.0, 0.0, 0.71, 0.7]),
+            "1_up": ([0.305, 0.0250,  0.05], [0.0, 0.0, 0.71, 0.7]),
+            "2_up": ([0.305, 0.0550,  0.05], [0.0, 0.0, 0.71, 0.7]),
+            "3_up": ([0.305, 0.0880,  0.05], [0.0, 0.0, 0.71, 0.7]),
+
             "white_1": ([0.3300, -0.1550, -0.008], [0.0, 0.0, 0.071, 0.7]),
             "white_2": ([0.3000, -0.1550, -0.008], [0.0, 0.0, 0.071, 0.7]),
             "white_3": ([0.2700, -0.1550, -0.008], [0.0, 0.0, 0.071, 0.7]),
             "white_4": ([0.2300, -0.1550, -0.008], [0.0, 0.0, 0.071, 0.7]),
             "white_5": ([0.2000, -0.1550, -0.008], [0.0, 0.0, 0.071, 0.7]),
+
+            "white_1_up": ([0.3300, -0.1550, 0.05], [0.0, 0.0, 0.071, 0.7]),
+            "white_2_up": ([0.3000, -0.1550, 0.05], [0.0, 0.0, 0.071, 0.7]),
+            "white_3_up": ([0.2700, -0.1550, 0.05], [0.0, 0.0, 0.071, 0.7]),
+            "white_4_up": ([0.2300, -0.1550, 0.05], [0.0, 0.0, 0.071, 0.7]),
+            "white_5_up": ([0.2000, -0.1550, 0.05], [0.0, 0.0, 0.071, 0.7]),
+
+
+            "black_1_up": ([0.3150, 0.2450, 0.05], [0.0, 0.0, 0.71, 0.7]),
+            "black_2_up": ([0.2850, 0.2400, 0.05], [0.0, 0.0, 0.71, 0.7]),
+            "black_3_up": ([0.2550, 0.2350, 0.05], [0.0, 0.0, 0.71, 0.7]),
+            "black_4_up": ([0.2250, 0.2350, 0.05], [0.0, 0.0, 0.71, 0.7]),
+            "black_5_up": ([0.1950, 0.2350, 0.05], [0.0, 0.0, 0.71, 0.7]),
 
             "black_1": ([0.3150, 0.2450, -0.008], [0.0, 0.0, 0.71, 0.7]),
             "black_2": ([0.2850, 0.2400, -0.008], [0.0, 0.0, 0.71, 0.7]),
@@ -97,13 +120,13 @@ class ArmMoveWithInput(Node):
                 self.ready_to_process = True
             self.get_logger().info("收到开始执行信号，开始处理动作队列")
 
-    def wait_until_success(self, command: str, retry_delay=0.2):
+    def wait_until_success(self, command: str, retry_delay=1):
         """发送命令并等待返回 True"""
         while True:
             success = self.send_command(command)
+            time.sleep(retry_delay)
             if success:
                 return
-            time.sleep(retry_delay)
 
     def move_chess(self, msg):
         """处理 ChessMove 消息（task2 和 task3）"""
@@ -122,9 +145,8 @@ class ArmMoveWithInput(Node):
                 action = self.action_queue.get()
                 if action[0] == 'chess':
                     self.move_chess_action(action[1], action[2])
-                elif action[0] == 'start_match':
-                    self.start_match_action()
-
+                if not action[1] :
+                    self.ready_to_process = False
                 self.action_queue.task_done()
 
 
@@ -142,15 +164,18 @@ class ArmMoveWithInput(Node):
             chess_key = f"{prefix}_{self.white}"
             self.white = (self.white % 5) + 1
         self.get_logger().info(f"发布抓取命令 ({prefix}, ChessMove: data=1)")
+        self.wait_until_success(chess_key+f"_up")
         self.wait_until_success(chess_key)
         move_msg = Int8()
         move_msg.data = 1
         self.grip_publisher.publish(move_msg)
-        self.wait_until_success("0")
+        self.wait_until_success(chess_key+f"_up")
+        self.wait_until_success(grid_index+f"_up")
         self.wait_until_success(grid_index)
         move_msg = Int8()
         move_msg.data = 0
         self.grip_publisher.publish(move_msg)
+        self.wait_until_success(grid_index+f"_up")
         self.get_logger().info(f"发布释放命令 ({prefix}, Int8: data=0)")
         self.wait_until_success("0")
 
@@ -185,25 +210,12 @@ class ArmMoveWithInput(Node):
                 cartesian=False,
             )
 
+            current_pos  = self.get_end_effector_pose()
 
-            reached = False
-            timeout = 3.0  # 最长等待时间（秒）
-            start_time = time.time()
-
-            while time.time() - start_time < timeout:
-                current_pos  = self.get_end_effector_pose()
-                if current_pos is None:
-                    continue
-
-                if self.pose_reached(target_pos, target_quat, current_pos):
-                    reached = True
-                    break
-                #self.get_logger().info(f"规划成功，开始执行{current_pos}")
-
-
-            if reached:
+            if self.pose_reached(target_pos, target_quat, current_pos):
                 self.get_logger().info("机械臂末端已到达目标位置")
                 return True
+
             else:
                 self.get_logger().warn("机械臂末端未在限定时间内到达目标位置")
 
