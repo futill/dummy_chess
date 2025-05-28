@@ -5,7 +5,7 @@ from PySide6.QtGui import QFont
 from PySide6.QtCore import QTimer, QMetaObject, Qt, Q_ARG, Slot
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String, Bool
+from std_msgs.msg import String, Bool,Int32MultiArray
 from my_robot_pkg_msg.msg import ChessMove
 from threading import Thread
 import time
@@ -158,6 +158,36 @@ class ChessGUI(QWidget):
         current_state = self.state_buffer.copy()
         print(f"AI 检查 - 当前状态: {current_state}")
         print(f"AI 检查 - 之前状态: {self.previous_ros_state}")
+                # 检测是否有棋子被人为移动位置
+
+        for color in ("white", "black"):
+            removed = [
+                i for i in range(9) if self.previous_ros_state[i] == color and current_state[i] is None
+            ]
+            added = [
+                i for i in range(9) if self.previous_ros_state[i] is None and current_state[i] == color
+            ]
+
+            if len(removed) == 1 and len(added) == 1:
+                print(f"⚠️ 检测到 {color} 棋子从位置 {removed[0]+1} 移动到位置 {added[0]+1}，将自动纠正。")
+
+                # 发布纠正位置信息到 correction_move topic
+                correction_msg = Int32MultiArray()
+                correction_msg.data = [removed[0], added[0]]
+                self.ros_node.correction_pub.publish(correction_msg)
+                time.sleep(0.3)
+
+                # 更新 GUI 显示
+                self.grid[removed[0]].setText("⚫" if color == "black" else "⚪")
+                self.state_buffer[removed[0]] = color
+                self.previous_ros_state[removed[0]] = color
+
+                self.grid[added[0]].setText(f"<div align='center' style='color:gray;'>{added[0] + 1}</div>")
+                self.state_buffer[added[0]] = None
+                self.previous_ros_state[added[0]] = None
+
+                return 
+
 
         # 检测新白棋（人类落子）
         if self.is_first_player:
@@ -331,13 +361,14 @@ class GuiNode(Node):
         self.gui = gui
         self.publisher = self.create_publisher(ChessMove, '/move', 10)
         self.start_exec = self.create_publisher(Bool, '/start_exec', 10)
-        self.match_start_pub = self.create_publisher(String, '/start_match', 10)
+        self.correction_pub = self.create_publisher(Int32MultiArray, '/correction_move', 10)
         self.subscription = self.create_subscription(
             ChessMove,
             '/chess_state',
             self.chess_state_callback,
             10
         )
+        
 
     def chess_state_callback(self, msg):
         # 接受所有颜色，包括 ' '

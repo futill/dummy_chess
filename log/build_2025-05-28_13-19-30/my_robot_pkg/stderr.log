@@ -1,0 +1,5 @@
+  File "/home/futill/targer_ws/install/my_robot_pkg/lib/python3.10/site-packages/my_robot_pkg/gui.py", line 189
+    return 
+    ^^^^^^
+SyntaxError: 'return' outside function
+

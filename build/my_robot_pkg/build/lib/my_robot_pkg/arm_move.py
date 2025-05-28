@@ -11,7 +11,7 @@ import tf2_ros
 from geometry_msgs.msg import TransformStamped
 from my_robot_pkg_msg.msg import ChessMove
 from threading import Thread, Lock
-from std_msgs.msg import Int8,Bool
+from std_msgs.msg import Int8,Bool,Int32MultiArray
 from queue import Queue
 
 
@@ -54,6 +54,12 @@ class ArmMoveWithInput(Node):
                                                 self.move_chess,
                                                 1)
         self.create_subscription(
+                                Int32MultiArray,
+                                '/correction_move',
+                                self.move_correction,
+                                1
+                            )
+        self.create_subscription(
                                 Bool,
                                 '/start_exec',
                                 self.start_exec_callback,
@@ -77,7 +83,7 @@ class ArmMoveWithInput(Node):
             "2": ([0.305, 0.0550, -0.008], [0.0, 0.0, 0.71, 0.7]),
             "3": ([0.305, 0.0880, -0.008], [0.0, 0.0, 0.71, 0.7]),
 
-            "4_up": ([0.3350, 0.0250, 0.0], [0.0, 0.0, 0.71, 0.7]),
+            "4_up": ([0.3350, 0.0250, 0.05], [0.0, 0.0, 0.71, 0.7]),
             "5_up": ([0.3350, 0.0550, 0.05], [0.0, 0.0, 0.71, 0.7]),
             "6_up": ([0.3350, 0.0850, 0.05], [0.0, 0.0, 0.71, 0.7]),
             "7_up": ([0.3650, 0.0250, 0.05], [0.0, 0.0, 0.71, 0.7]),
@@ -127,6 +133,31 @@ class ArmMoveWithInput(Node):
             time.sleep(retry_delay)
             if success:
                 return
+    
+    def move_correction(self,msg):
+        if len(msg.data) == 2:
+            original_pos = msg.data[0]+1
+            moved_pos = msg.data[1]+1
+            self.move_correction_action(original_pos, moved_pos)
+    
+    def move_correction_action(self, original_pos, moved_pos):
+        """处理 ChessMove 动作"""
+        original_pos = str(original_pos)
+        moved_pos = str(moved_pos)
+        self.wait_until_success(moved_pos+f"_up")
+        self.wait_until_success(moved_pos)
+        move_msg = Int8()
+        move_msg.data = 1
+        self.grip_publisher.publish(move_msg)
+        self.wait_until_success(moved_pos+f"_up")
+        self.wait_until_success(original_pos+f"_up")
+        self.wait_until_success(original_pos)
+        move_msg = Int8()
+        move_msg.data = 0
+        self.grip_publisher.publish(move_msg)
+        self.wait_until_success(original_pos+f"_up")
+        self.wait_until_success("0")
+        
 
     def move_chess(self, msg):
         """处理 ChessMove 消息（task2 和 task3）"""
@@ -149,7 +180,7 @@ class ArmMoveWithInput(Node):
                     self.ready_to_process = False
                 self.action_queue.task_done()
 
-
+   
 
     
     def move_chess_action(self, grid_index, color):
