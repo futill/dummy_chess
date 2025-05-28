@@ -10,7 +10,7 @@ import queue
 import time
 import math
 from my_robot_pkg_msg.msg import ChessMove
-from std_msgs.msg import Int8
+from std_msgs.msg import Int8,Float64
 
 class ChessboardDetectorNode(Node):
     def __init__(self):
@@ -24,6 +24,7 @@ class ChessboardDetectorNode(Node):
             qos_profile_sensor_data
         )
         self.move_publisher = self.create_publisher(ChessMove, '/chess_state', 10)
+        self.angle_publisher = self.create_publisher(Float64, '/chessboard_angle', 10)
         self.get_logger().info(f"已订阅图像话题：{image_topic}")
 
         self.image_queue = queue.Queue(maxsize=10)
@@ -84,7 +85,7 @@ class ChessboardDetectorNode(Node):
         delta_x = p2[0] - p1[0]
         angle_rad = math.atan2(delta_y, delta_x)
         angle_deg = math.degrees(angle_rad) % 360
-        angle_deg = (angle_deg + 90) % 360
+        angle_deg = (angle_deg) % 360
         return angle_deg
 
     def process_single_image(self, frame):
@@ -147,6 +148,9 @@ class ChessboardDetectorNode(Node):
 
         cv2.polylines(frame_crop, [board_rect], isClosed=True, color=color, thickness=3)
         angle = self.calculate_rotation_angle(board_rect)
+        angle_msg = Float64()
+        angle_msg.data = angle
+        self.angle_publisher.publish(angle_msg)
         text = f"Angle: {angle:.2f} deg"
         cv2.putText(frame_crop, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
 
@@ -165,8 +169,8 @@ class ChessboardDetectorNode(Node):
         self.detect_and_publish_chess_pieces(warp, board_rect)
 
         with self.lock:
-            #cv2.imshow("Chessboard Detection", frame_crop)
-            cv2.imshow("Warped Board", warp)
+            cv2.imshow("Chessboard Detection", frame_crop)
+            #cv2.imshow("Warped Board", warp)
             cv2.waitKey(1)
 
     def find_largest_rectangle(self, contours):

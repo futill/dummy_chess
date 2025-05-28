@@ -11,7 +11,7 @@ import tf2_ros
 from geometry_msgs.msg import TransformStamped
 from my_robot_pkg_msg.msg import ChessMove
 from threading import Thread, Lock
-from std_msgs.msg import Int8,Bool,Int32MultiArray
+from std_msgs.msg import Int8,Bool,Int32MultiArray,Float64
 from queue import Queue
 
 
@@ -67,6 +67,14 @@ class ArmMoveWithInput(Node):
                             )
 
         self.grip_publisher = self.create_publisher(Int8, '/grip', 10)      
+        self.chessboard_angle = 0.0  # 默认旋转角度
+        self.chessboard_center = [0.3350, 0.0550, -0.008]  # 格子5的坐标作为旋转中心
+        self.angle_subscription = self.create_subscription(
+            Float64,
+            '/chessboard_angle',
+            self.angle_callback,
+            10
+        )
         self.action_thread = Thread(target=self.process_action_queue, daemon=True)
         self.action_thread.start()                                  
 
@@ -118,6 +126,49 @@ class ArmMoveWithInput(Node):
             "black_4": ([0.2250, 0.2350, -0.008], [0.0, 0.0, 0.71, 0.7]),
             "black_5": ([0.1950, 0.2350, -0.010], [0.0, 0.0, 0.71, 0.7])
         }
+        self.original_commands = self.commands.copy()  # 保存原始坐标
+
+    def angle_callback(self, msg):
+            """接收棋盘旋转角度并更新棋格坐标"""
+            with self.queue_lock:
+                if abs(self.chessboard_angle - msg.data) > 1.0:  # 仅在角度变化超过1度时更新
+                    self.chessboard_angle = msg.data
+                    self.update_grid_coordinates()
+                    self.get_logger().info(f"收到棋盘旋转角度：{self.chessboard_angle:.2f} 度，坐标已更新")
+
+    def update_grid_coordinates(self):
+        """根据旋转角度更新棋格1-9及其 _up 版本的坐标"""
+        angle_rad = np.deg2rad(self.chessboard_angle)
+        cos_theta = np.cos(angle_rad)
+        sin_theta = np.sin(angle_rad)
+        
+        # 旋转矩阵
+        rotation_matrix = np.array([
+            [cos_theta, -sin_theta],
+            [sin_theta, cos_theta]
+        ])
+
+        # 更新棋格1-9及其 _up 版本的坐标
+        for grid in ["1", "2", "3", "4", "5", "6", "7", "8", "9",
+                    "1_up", "2_up", "3_up", "4_up", "5_up", "6_up", "7_up", "8_up", "9_up"]:
+            if grid in self.original_commands:
+                pos, quat = self.original_commands[grid]
+                # 将坐标相对于棋盘中心平移
+                relative_pos = np.array([
+                    pos[0] - self.chessboard_center[0],
+                    pos[1] - self.chessboard_center[1]
+                ])
+                # 应用旋转
+                rotated_pos = rotation_matrix @ relative_pos
+                # 转换回绝对坐标
+                new_pos = [
+                    rotated_pos[0] + self.chessboard_center[0],
+                    rotated_pos[1] + self.chessboard_center[1],
+                    pos[2]  # 保持 z 不变
+                ]
+                # 更新 commands 字典
+                self.commands[grid] = (new_pos, quat)
+                self.get_logger().debug(f"更新格子 {grid} 坐标：{new_pos}")
 
     def start_exec_callback(self, msg: Bool):
         """接收启动指令，允许执行动作队列"""
